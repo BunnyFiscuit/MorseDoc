@@ -8,7 +8,7 @@
     android:background="@android:color/white"
     tools:context=".views.FullscreenActivity">
 
-
+<!--
     <fragment
         android:id="@+id/unlock_fragment"
         android:name="com.example.android.morsedoc.views.UnlockFragment"
@@ -17,7 +17,15 @@
         android:layout_height="match_parent"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        tools:layout="@layout/fragment_unlock" />
+        tools:layout="@layout/fragment_unlock" /> -->
+
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
 
 </FrameLayout>
