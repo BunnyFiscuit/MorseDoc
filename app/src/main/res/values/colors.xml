@@ -5,4 +5,6 @@
     <color name="colorPrimaryDark">#9900aa</color>
 
     <color name="black_overlay">#66000000</color>
+    <color name="nice_black">#171923</color>
+    <color name="nice_black_overlay">#BE171923</color>
 </resources>

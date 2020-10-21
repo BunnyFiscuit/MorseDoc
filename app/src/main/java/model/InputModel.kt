@@ -1,36 +1,58 @@
 package model
 
-object InputModelSingleton {
-    val instance = InputModel()
-}
+import android.util.Log
 
-class InputModel constructor() {
-
-
-    companion object {
-        val instance = InputModel()
-    }
+object InputModel {
+    private val TAG = "InputModel"
 
     private var attemptInput = ArrayList<MorsePress>()
     private var securedInput = ArrayList<MorsePress>()
+
+
+    init {
+        Log.d(TAG, "init")
+        setTest(1)
+    }
+
 
     fun resetAttempt() {
         attemptInput = ArrayList<MorsePress>()
     }
 
-    fun setSecuredTest() {
+    private fun setSecuredTest1() {
+        securedInput = ArrayList<MorsePress>()
         securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.LONG)
         securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.LONG)
         securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.LONG)
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.LONG)
         securedInput.add(MorsePress.SHORT)
     }
 
-    fun checkAttempt(): Boolean {
+    private fun setSecuredTest2() {
+        securedInput = ArrayList<MorsePress>()
+        securedInput.add(MorsePress.SHORT)
+        securedInput.add(MorsePress.LONG)
+        securedInput.add(MorsePress.SHORT)
+        securedInput.add(MorsePress.LONG)
+    }
+
+    private fun setSecuredTest3() {
+        securedInput = ArrayList<MorsePress>()
+        securedInput.add(MorsePress.SHORT)
+        securedInput.add(MorsePress.LONG)
+        securedInput.add(MorsePress.LONG)
+        securedInput.add(MorsePress.SHORT)
+        securedInput.add(MorsePress.SHORT)
+    }
+
+    fun setTest(test: Int) {
+        when (test) {
+            1 -> setSecuredTest1()
+            2 -> setSecuredTest2()
+            3 -> setSecuredTest3()
+        }
+    }
+
+    fun correctAttempt(): Boolean {
         return attemptInput == securedInput
     }
 

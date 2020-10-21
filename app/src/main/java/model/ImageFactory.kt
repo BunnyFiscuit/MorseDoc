@@ -12,7 +12,7 @@ class ImageFactory(ctx: Context) {
 
     fun getImage(morsePress: MorsePress): ImageView {
         return when (morsePress) {
-            MorsePress.LONG -> getLongImage()
+            MorsePress.LONG -> getAltLongImage()
             MorsePress.SHORT -> getShortImage()
         }
     }
@@ -20,27 +20,31 @@ class ImageFactory(ctx: Context) {
     private fun getLongImage() : ImageView {
         val image = ImageView(context)
         image.setImageResource(R.drawable.morse_long)
-        image.layoutParams = TableRow.LayoutParams()
-        image.layoutParams.width = context.resources.getDimension(R.dimen.morse_width).roundToInt()
-        image.layoutParams.height = context.resources.getDimension(R.dimen.morse_height).roundToInt()
+        val width = context.resources.getDimension(R.dimen.morse_width).roundToInt()
+        val height = context.resources.getDimension(R.dimen.morse_height).roundToInt()
+        image.layoutParams = TableRow.LayoutParams(width, height, 1f)
+        image.scaleType = ImageView.ScaleType.CENTER
         return image
     }
 
     private fun getShortImage() : ImageView {
         val image = ImageView(context)
         image.setImageResource(R.drawable.morse_short)
-        image.layoutParams = TableRow.LayoutParams()
-        image.layoutParams.width = context.resources.getDimension(R.dimen.morse_width).roundToInt()
-        image.layoutParams.height = context.resources.getDimension(R.dimen.morse_height).roundToInt()
+        val width = context.resources.getDimension(R.dimen.morse_width).roundToInt()
+        val height = context.resources.getDimension(R.dimen.morse_height).roundToInt()
+        image.layoutParams = TableRow.LayoutParams(width, height, 1f)
+
+        image.scaleType = ImageView.ScaleType.CENTER
         return image
     }
 
     fun getAltLongImage() : ImageView {
         val image = ImageView(context)
         image.setImageResource(R.drawable.morse_long_2)
-        image.layoutParams = TableRow.LayoutParams()
-        image.layoutParams.width = context.resources.getDimension(R.dimen.morse_width_2).roundToInt()
-        image.layoutParams.height = context.resources.getDimension(R.dimen.morse_height).roundToInt()
+        val width: Int = context.resources.getDimension(R.dimen.morse_width_2).roundToInt()
+        val height: Int = context.resources.getDimension(R.dimen.morse_height).roundToInt()
+        image.layoutParams = TableRow.LayoutParams(width, height, 1f)
+
         image.scaleType = ImageView.ScaleType.CENTER
         return image
     }

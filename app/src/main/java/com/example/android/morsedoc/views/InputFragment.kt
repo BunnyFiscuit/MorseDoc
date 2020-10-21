@@ -1,18 +1,22 @@
 package com.example.android.morsedoc.views
 
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.android.morsedoc.R
 import model.ImageFactory
 import model.InputModel
-import model.InputModelSingleton
 import model.MorsePress
 import java.lang.Integer.max
 import java.lang.Integer.min
+import java.util.*
 import kotlin.math.roundToInt
 
 private const val TAG: String = "InputFragment"
@@ -31,7 +35,8 @@ class InputFragment: Fragment() {
     private lateinit var inputModel: InputModel
     private lateinit var progressBar: ProgressBar
     private lateinit var imageFactory: ImageFactory
-    var inputCounter: Int = 0
+    private lateinit var visibilityView: ImageView
+    private var inputVisible = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +50,7 @@ class InputFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        inputModel = InputModelSingleton.instance
-        inputModel.setSecuredTest()
+        inputModel = model.InputModel
         imageFactory = context?.let { ImageFactory(it) }!!
 
         inputView = view?.findViewById(R.id.input_view)!!
@@ -56,6 +60,15 @@ class InputFragment: Fragment() {
         initProgressBar()
 
         view?.findViewById<ImageView>(R.id.xbutton)?.setOnClickListener { reset() }
+
+        view?.findViewById<ImageView>(R.id.input_visiblity)?.setOnClickListener { view: View? ->
+            val iv: ImageView = view as? ImageView ?: return@setOnClickListener
+            if (inputVisible) iv.setImageResource(R.drawable.ic_visibility_off)
+            else iv.setImageResource(R.drawable.ic_visibility)
+
+            inputVisible = !inputVisible
+            update()
+        }
     }
 
     private fun initListeners() {
@@ -72,12 +85,12 @@ class InputFragment: Fragment() {
     private fun update() {
         Log.d(TAG, "update")
 
-//        if (inputModel.inputsEqual() && inputModel.checkAttempt()) {
-//
-//        }
-
         tableLayout.removeAllViews()
         progressBar.progress = inputModel.getAttempts().size
+
+        // Hide inputs
+        if (!inputVisible) return
+
         val attempts = inputModel.getAttempts()
         if (attempts.size == 0) return
 
@@ -91,8 +104,8 @@ class InputFragment: Fragment() {
             val tr = TableRow(context)
 
             tr.id = 100 + row
-            val trParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
-                resources.getDimension(R.dimen.table_row_height).roundToInt(),1f)
+            val trParams = TableLayout.LayoutParams(MATCH_CONSTRAINT,
+                resources.getDimension(R.dimen.table_row_height).roundToInt())
 
             attempts.forEachIndexed { index, morsePress ->
                 if (index >= mCounter && index < mCounter+3) {
@@ -106,8 +119,16 @@ class InputFragment: Fragment() {
             mCounter += 3
         }
         tableLayout.isStretchAllColumns = true
+        if (inputModel.inputsEqual() && inputModel.correctAttempt()) {
+            Timer().schedule(InputCheckTask(), 500)
+        }
+    }
 
 
+    private inner class InputCheckTask() : TimerTask() {
+        override fun run() {
+            findNavController().navigate(R.id.action_inputFragment_to_welcomeFragment)
+        }
 
     }
 
@@ -118,6 +139,11 @@ class InputFragment: Fragment() {
         update()
     }
 
+    override fun onPause() {
+        super.onPause()
+        reset()
+    }
+
 
     private open class MyClickListener(val fragment: InputFragment?) : View.OnTouchListener {
 
@@ -125,7 +151,7 @@ class InputFragment: Fragment() {
 
         private var lastDown: Long = 0
         private var lastDuration: Long = 0
-        private var inputModel = InputModelSingleton.instance
+        private var inputModel = model.InputModel
 
         override fun onTouch(v: View?, e: MotionEvent?): Boolean {
             if (!inputModel.inputsEqual()) {
