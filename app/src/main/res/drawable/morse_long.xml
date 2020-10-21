@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <corners android:bottomLeftRadius="0dp"
+        android:topLeftRadius="0dp"
+        android:bottomRightRadius="0dp"
+        android:topRightRadius="0dp" />
+
+    <gradient
+        android:angle="-90"
+        android:startColor="@color/nice_black_overlay"
+        android:endColor="@color/nice_black"/>
+
+    <stroke
+        android:color="@color/colorAccent"/>
+
+    <size
+        android:height="80dp"
+        android:width="80dp"/>
+
+</shape>

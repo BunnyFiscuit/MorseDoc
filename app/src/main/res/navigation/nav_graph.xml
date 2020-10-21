@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/unlockFragment">
+    <fragment
+        android:id="@+id/unlockFragment"
+        android:name="com.example.android.morsedoc.views.UnlockFragment"
+        android:label="UnlockFragment"
+        tools:layout="@layout/fragment_unlock">
+        <action
+            android:id="@+id/action_unlockFragment_to_inputFragment"
+            app:destination="@id/inputFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/unlockFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputFragment"
+        android:name="com.example.android.morsedoc.views.InputFragment"
+        android:label="InputFragment"
+        tools:layout="@layout/fragment_input">
+        <action
+            android:id="@+id/action_inputFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/unlockFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.android.morsedoc.views.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome"/>
+</navigation>
