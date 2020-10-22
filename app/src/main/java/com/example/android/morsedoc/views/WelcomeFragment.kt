@@ -21,6 +21,14 @@ class WelcomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        Timer().schedule(NextStepTask(), 1000)
+    }
+
+    private inner class NextStepTask : TimerTask() {
+        override fun run() {
+            findNavController().navigate(R.id.action_welcomeFragment_to_dummyMainFragment)
+        }
+
     }
 
 

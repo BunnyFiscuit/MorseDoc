@@ -1,6 +1,5 @@
 package com.example.android.morsedoc.views
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -12,18 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.android.morsedoc.R
-import model.InputModel
+import com.example.android.morsedoc.model.InputModel
 
 private const val TAG = "UnlockFragment"
 private const val GESTURE_TAG = "MyGestureListener"
 
 class UnlockFragment : Fragment() {
 
-    companion object {
-        fun newInstance(): UnlockFragment {
-            return UnlockFragment()
-        }
-    }
 
     private lateinit var navigationManager: Navigation
     private lateinit var inputModel: InputModel
@@ -46,7 +40,7 @@ class UnlockFragment : Fragment() {
         // Change visibility of buttons for testing purposes
         btnContainer.visibility = View.VISIBLE
 
-        inputModel = model.InputModel
+        inputModel = InputModel
 
         view?.findViewById<ImageView>(R.id.lockIcon)
             ?.setOnClickListener(object : View.OnClickListener {
