@@ -9,4 +9,13 @@
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+
+    <declare-styleable name="MyFolder">
+        <attr name="folderName" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="MyFile">
+        <attr name="fileName" format="string"/>
+    </declare-styleable>
+
 </resources>

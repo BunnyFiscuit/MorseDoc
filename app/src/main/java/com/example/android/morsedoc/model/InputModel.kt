@@ -1,6 +1,8 @@
-package model
+package com.example.android.morsedoc.model
 
 import android.util.Log
+import java.util.*
+import kotlin.collections.ArrayList
 
 object InputModel {
     private val TAG = "InputModel"
@@ -19,29 +21,44 @@ object InputModel {
         attemptInput = ArrayList<MorsePress>()
     }
 
+    // .-..
     private fun setSecuredTest1() {
-        securedInput = ArrayList<MorsePress>()
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.SHORT)
+        securedInput = arrayListOf<MorsePress>();
+        securedInput.addAll(listOf(
+            MorsePress.SHORT,
+            MorsePress.LONG,
+            MorsePress.SHORT,
+            MorsePress.SHORT,
+        ));
     }
 
+    // ..-.--
     private fun setSecuredTest2() {
-        securedInput = ArrayList<MorsePress>()
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.LONG)
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.LONG)
+        securedInput = arrayListOf<MorsePress>();
+        securedInput.addAll(listOf(
+            MorsePress.SHORT,
+            MorsePress.SHORT,
+            MorsePress.LONG,
+            MorsePress.SHORT,
+            MorsePress.LONG,
+            MorsePress.LONG,
+        ));
     }
 
+    // ..-.--..-
     private fun setSecuredTest3() {
-        securedInput = ArrayList<MorsePress>()
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.LONG)
-        securedInput.add(MorsePress.LONG)
-        securedInput.add(MorsePress.SHORT)
-        securedInput.add(MorsePress.SHORT)
+        securedInput = arrayListOf<MorsePress>();
+        securedInput.addAll(listOf(
+            MorsePress.SHORT,
+            MorsePress.SHORT,
+            MorsePress.LONG,
+            MorsePress.SHORT,
+            MorsePress.LONG,
+            MorsePress.LONG,
+            MorsePress.SHORT,
+            MorsePress.SHORT,
+            MorsePress.LONG
+        ));
     }
 
     fun setTest(test: Int) {

@@ -1,4 +1,4 @@
-package model
+package com.example.android.morsedoc.model
 
 import android.content.Context
 import android.widget.ImageView

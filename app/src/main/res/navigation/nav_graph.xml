@@ -14,6 +14,7 @@
             app:destination="@id/inputFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit"
+            app:popExitAnim="@anim/fragment_fade_exit"
             app:popUpTo="@id/unlockFragment" />
     </fragment>
     <fragment
@@ -26,11 +27,25 @@
             app:destination="@id/welcomeFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit"
+            app:popExitAnim="@anim/fragment_fade_exit"
             app:popUpTo="@id/unlockFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.android.morsedoc.views.WelcomeFragment"
         android:label="WelcomeFragment"
-        tools:layout="@layout/fragment_welcome"/>
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_dummyMainFragment"
+            app:destination="@id/dummyMainFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popExitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/unlockFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dummyMainFragment"
+        android:name="com.example.android.morsedoc.views.DummyMainFragment"
+        android:label="DummyMainFragment"
+        tools:layout="@layout/fragment_dummy_main"/>
 </navigation>
