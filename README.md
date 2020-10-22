@@ -9,3 +9,10 @@ Digital Authentication & Access
 
 #### Approach
 Started as Design for the Real World, ended as Research Through Design
+
+
+
+### Tests
++ Test 1: .-..
++ Test 2: ..-.--
++ Test 3: ..-.--..-
