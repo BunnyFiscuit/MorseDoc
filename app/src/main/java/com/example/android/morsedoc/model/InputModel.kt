@@ -45,19 +45,19 @@ object InputModel {
         ));
     }
 
-    // ..-.--..-
+    // --...--..
     private fun setSecuredTest3() {
         securedInput = arrayListOf();
         securedInput.addAll(listOf(
-            MorsePress.SHORT,
-            MorsePress.SHORT,
-            MorsePress.LONG,
-            MorsePress.SHORT,
             MorsePress.LONG,
             MorsePress.LONG,
             MorsePress.SHORT,
             MorsePress.SHORT,
-            MorsePress.LONG
+            MorsePress.SHORT,
+            MorsePress.LONG,
+            MorsePress.LONG,
+            MorsePress.SHORT,
+            MorsePress.SHORT
         ));
     }
 
