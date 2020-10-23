@@ -13,17 +13,17 @@ object InputModel {
 
     init {
         Log.d(TAG, "init")
-        setTest(1)
+        setTest(2)
     }
 
 
     fun resetAttempt() {
-        attemptInput = ArrayList<MorsePress>()
+        attemptInput = arrayListOf()
     }
 
     // .-..
     private fun setSecuredTest1() {
-        securedInput = arrayListOf<MorsePress>();
+        securedInput = arrayListOf();
         securedInput.addAll(listOf(
             MorsePress.SHORT,
             MorsePress.LONG,
@@ -34,7 +34,7 @@ object InputModel {
 
     // ..-.--
     private fun setSecuredTest2() {
-        securedInput = arrayListOf<MorsePress>();
+        securedInput = arrayListOf();
         securedInput.addAll(listOf(
             MorsePress.SHORT,
             MorsePress.SHORT,
@@ -47,7 +47,7 @@ object InputModel {
 
     // ..-.--..-
     private fun setSecuredTest3() {
-        securedInput = arrayListOf<MorsePress>();
+        securedInput = arrayListOf();
         securedInput.addAll(listOf(
             MorsePress.SHORT,
             MorsePress.SHORT,

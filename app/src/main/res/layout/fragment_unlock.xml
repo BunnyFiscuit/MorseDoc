@@ -92,4 +92,16 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Tap to unlock!"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/lockIcon"
+        app:layout_constraintStart_toStartOf="@+id/lockIcon"
+        app:layout_constraintTop_toBottomOf="@+id/lockIcon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
