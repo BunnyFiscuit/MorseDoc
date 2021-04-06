@@ -3,7 +3,7 @@
 An app project for the Mobile Computing course (CIU196/TIA110) given at Chalmers and University of Gothenburg.
 
 ![MorseDoc](morsedoc.jpg)  
-[Project Website](https://morsedoc.squarespace.com) (*The website can currently only be accessed via the password input: 123123*)  
+[Project Website](https://morsedoc.squarespace.com) (*As the project was for a course, the website has now expired.*)  
 
 #### Challenge
 Digital Authentication & Access
